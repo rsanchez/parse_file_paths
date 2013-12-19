@@ -15,13 +15,21 @@ class Parse_file_paths
 
 	public function Parse_file_paths()
 	{
-		$this->EE = get_instance();
-		
-		$this->EE->load->library('typography');
-		
-		$this->EE->typography->parse_images = TRUE;
-		
-		$this->return_data = $this->EE->typography->parse_file_paths($this->EE->TMPL->tagdata);
+                $this->EE = get_instance();
+
+                $this->EE->load->library('typography');
+
+                $this->EE->typography->parse_images = TRUE;
+
+                $the_string = $this->EE->TMPL->tagdata;
+
+                if ($this->EE->TMPL->fetch_param('manipulation')) {
+                        $find = '}';
+                        $manipulation = '}_' . $this->EE->TMPL->fetch_param('manipulation') . '/';
+                        $the_string = strrev(implode(strrev($manipulation), explode($find, strrev($the_string), 2)));
+                }
+        
+                $this->return_data = $this->EE->typography->parse_file_paths($the_string);
 	}
 	
 	public static function usage()
