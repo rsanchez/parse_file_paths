@@ -4,7 +4,7 @@ Parses {filedir_X} variables. Works great with query module and activerecord plu
 
 ## Installation
 
-* Copy the /system/expressionengine/third_party/parse_file_paths/ folder to your /system/expressionengine/third_party/ folder
+* Copy the /system/user/addons/parse_file_paths/ folder to your /system/expressionengine/third_party/ folder
 
 ## Usage
 	{exp:query sql="SELECT field_id_1 AS file FROM exp_channel_data"}
